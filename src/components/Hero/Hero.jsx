@@ -9,7 +9,7 @@ function Hero() {
         <div className='flex flex-col justify-center items-center'>
             <h1 className='text-8xl text-white font-bold	'>Your Unified Contact Manager</h1>
             <h2 className='text-xl text-white text-center mt-8'>Streamline Your Connections Seamlessly with BondBook: The Ultimate Contact Management App!</h2>
-            <Link to="/pages/UserDashboard">
+            <Link to="pages/UserDashboard">
             <Prim_Button /></Link>
             
         </div>

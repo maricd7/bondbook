@@ -1,10 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import UserDashboard from './pages/UserDashboard';
 
 function App() {
   return (
     <div className="App">
-      BondBook.
+      <Router>
+        <Routes>
+          <Route path="/" exact element={<Home/>}/>
+          <Route path="/pages/UserDashboard" element={<UserDashboard/>} />
+          
+        </Routes>
+      </Router>
     </div>
   );
 }

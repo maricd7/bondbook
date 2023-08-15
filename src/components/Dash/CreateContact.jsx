@@ -14,7 +14,6 @@ function MyContacts() {
     const savedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
     savedContacts.push(contact);
     localStorage.setItem('contacts', JSON.stringify(savedContacts));
-
     setContact({
       name: '',
       number: '',

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import EditContact from './EditContact';
 
 function MyContacts() {
   const [contacts, setContacts] = useState([]);
   const [showContacts, setShowContacts] = useState(false);
+  const [editModal, setEditModal] = useState(false);
 
   useEffect(() => {
     const savedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
@@ -17,27 +19,68 @@ function MyContacts() {
     }
   }, []);
 
-  // DELETE CONTACT
+  //DELETE CONTACT
+
   function deleteContact(index) {
     const updatedContacts = contacts.filter((_, i) => i !== index);
     setContacts(updatedContacts);
     localStorage.setItem('contacts', JSON.stringify(updatedContacts));
+    if(updateContacts.length <= 0){
+      setShowContacts(false)
+    }
+  }
+
+  //EDIT CONTACT
+
+  function openModal(index) {
+    let filtered = contacts.filter((_, i) => i === index);
+    let rest = contacts.filter((_, i) => i !== index);
+
+    localStorage.setItem('contacts', JSON.stringify(rest));
+    localStorage.setItem('itemToEdit', JSON.stringify(filtered));
+    setEditModal(true);
+  }
+
+  function updateContacts(updatedContacts) {
+    setContacts(updatedContacts);
+    setEditModal(false); // Close the modal after updating contacts
   }
 
   return (
     <div className='flex-col flex justify-center items-center w-[720px]'>
+      {editModal && <EditContact toggleModal={() => setEditModal(false)} updateContacts={updateContacts} />}
+
       <h1 className='text-4xl text-white font-bold mt-8'>My Contacts</h1>
       <div className='bg-opacity-30 backdrop-blur-md bg-slate-400 w-full max-w-xl h-[720px] mt-16 rounded-lg relative p-8'>
         {!showContacts && (
-          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
-            {/* ... */}
+          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center flex flex-col justify-center items-center'>
+            <h4 className='font-bold text-4xl text-white w-[440px]'>You currently don't have any contacts.</h4>
+            <Icon icon="twemoji:sad-but-relieved-face" className='w-32 h-32 mt-8'/>
+
+
           </div>
         )}
         {showContacts && (
           <div className='text-white mt-8 text-lg'>
             {contacts.map((contact, index) => (
               <div key={index} className='border border-gray-300 p-4 mb-4 rounded-md'>
-                <Icon icon="basil:cross-solid" className='w-12 h-12 absolute right-12' onClick={() => { deleteContact(index) }} />
+                <div className='flex flex-col gap-4 absolute right-16'>
+                  <Icon
+                    icon='basil:trash-alt-solid'
+                    className='w-8 h-8 right-12 text-red-500'
+                    onClick={() => {
+                      deleteContact(index);
+                    }}
+                  />
+                  <Icon
+                    icon='basil:edit-alt-solid'
+                    className='w-8 h-8 right-12 text-white'
+                    onClick={() => {
+                      openModal(index);
+                    }}
+                  />
+                </div>
+
                 <div className='flex flex-col mb-2'>
                   <div className='flex items-center mb-1'>
                     <Icon icon='basil:user-solid' className='text-2xl text-blue-500 mr-2' />
@@ -67,6 +110,7 @@ function MyContacts() {
 }
 
 export default MyContacts;
+
 
 
 

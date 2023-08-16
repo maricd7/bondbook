@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { Icon } from '@iconify/react';
 function MyContacts() {
   const [contact, setContact] = useState({
     name: '',
@@ -24,8 +24,12 @@ function MyContacts() {
   return (
     <div className='bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-slate-500 via-black to-black h-screen flex justify-center'>
       <div className='flex-col flex justify-center items-center'>
+      
         <h1 className='text-4xl text-white font-bold mt-8'>Create Contact</h1>
         <div className='bg-opacity-30 backdrop-blur-md bg-slate-400 w-[1200px] h-[720px] mt-16 rounded-lg items-center flex flex-col justify-center'>
+        <Link to="/pages/UserDashboard">
+        <Icon icon="basil:cross-solid" className='w-12 h-12 absolute text-white right-12 top-12'/>
+        </Link>
           <form onSubmit={handleSubmit}>
             <div className='flex flex-col'>
               <label className=' ml-8 text-white'>Enter Name</label>

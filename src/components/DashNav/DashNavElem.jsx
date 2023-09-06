@@ -7,8 +7,8 @@ function DashNavElem() {
 
   return (
     <div>
-        <div className='text-lg font-bold text-white'>My Contacts</div>
-        <div className='text-lg text-white mt-4'>User Profile</div>
+        <div className='text-lg font-bold text-slate-700'>My Contacts</div>
+        <div className='text-lg text-slate-700 mt-4'>User Profile</div>
     </div>
   )
 }

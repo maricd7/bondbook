@@ -29,17 +29,17 @@ const Hero = () => {
       initial="hidden"
       animate="visible"
       variants={fadeInVariants}
-      className=" bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-slate-500 via-black to-black absolute h-full w-full m-0 flex justify-center items-center h-screen"
+      className=" text-gray-50		 absolute h-full w-full m-0 flex justify-center items-center h-screen"
     >
       <div className="flex flex-col justify-center items-center">
         <motion.h1
-          className="text-8xl text-white font-bold"
+          className="text-8xl text-slate-700	 font-bold"
           variants={delayVariants}
         >
           Your Unified Contact Manager
         </motion.h1>
         <motion.h2
-          className="text-xl text-white text-center mt-8"
+          className="text-xl text-slate-700	 text-center mt-8"
           variants={delayVariants}
         >
           Streamline Your Connections Seamlessly with BondBook: The Ultimate Contact Management App!

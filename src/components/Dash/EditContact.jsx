@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function EditContact({ toggleModal, updateContacts }) {
+function EditContact({ toggleModal, updateContacts, contactEditedModal }) {
   let contactToEdit = JSON.parse(localStorage.getItem('itemToEdit'));
 
   const [editedName, setEditedName] = useState(contactToEdit[0].name);
@@ -43,11 +43,12 @@ function EditContact({ toggleModal, updateContacts }) {
   }
 
   return (
-    <div className='bg-opacity-30 backdrop-blur-md bg-slate-400 w-[480px] h-[640px] bg-white text-slate-700 absolute z-40 rounded-md'>
-      <h4 className='mt-4 ml-4 font-bold text-white text-2xl'>Edit Contact</h4>
+    <div className='p-24 bg-opacity-30 border-2 w-[480px] h-[640px] bg-white text-slate-700 absolute z-40 rounded-md'>
+      
+      <h4 className='mt-4 ml-4 font-bold text-slate-700 text-2xl'>Edit Contact</h4>
       <div>
         <input
-          className='mt-4 ml-8 rounded-md px-8 py-4 max-w-lg min-w-full'
+          className='mt-4  rounded-md px-8 py-4 max-w-lg min-w-full'
           type='text'
           name='name'
           placeholder='Name'
@@ -57,7 +58,7 @@ function EditContact({ toggleModal, updateContacts }) {
       </div>
       <div>
         <input
-          className='mt-4 ml-8 rounded-md px-8 py-4 max-w-lg min-w-full'
+          className='mt-4  rounded-md px-8 py-4 max-w-lg min-w-full'
           type='email'
           name='email'
           placeholder='Email'
@@ -67,7 +68,7 @@ function EditContact({ toggleModal, updateContacts }) {
       </div>
       <div>
         <input
-          className='mt-4 ml-8 rounded-md px-8 py-4 max-w-lg min-w-full'
+          className='mt-4  rounded-md px-8 py-4 max-w-lg min-w-full'
           type='tel'
           name='number'
           placeholder='Number'
@@ -76,7 +77,11 @@ function EditContact({ toggleModal, updateContacts }) {
         />
       </div>
       <button
-        onClick={saveChanges}
+        onClick={()=>{
+          saveChanges(); 
+          contactEditedModal();
+        }}
+        
         className='absolute left-0 bottom-0 w-full bg-gradient-to-r from-[rgba(71,101,255,0.8)] to-[rgba(0,209,255,0.64)] px-8 py-2 rounded-lg text-white font-bold flex justify-center items-center shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.9)]'>
         Save changes
       </button>

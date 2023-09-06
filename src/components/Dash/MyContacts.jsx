@@ -83,7 +83,7 @@ function MyContacts() {
       <h1 className='text-4xl text-slate-700 font-bold mt-8'>My Contacts</h1>
      
       <div className='bg-opacity-30  w-full  h-[720px] mt-16 rounded-lg relative p-8 z-10'>
-      <Search contacts={contacts} setContacts={setContacts} />
+      <Search contacts={contacts} setContacts={setContacts}  />
         {!showContacts && (
           <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center flex flex-col justify-center items-center'>
             <h4 className='font-bold text-4xl text-slate-700 w-[440px]'>You currently don't have any contacts.</h4>

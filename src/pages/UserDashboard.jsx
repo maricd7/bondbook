@@ -9,7 +9,7 @@ function UserDashboard() {
   
   return (
     <div className='bg-gray-50	 h-screen flex justify-center '>
-     <DashNav/>
+     {/* <DashNav/> */}
       
      <MyContacts />
      
